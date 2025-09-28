@@ -4,4 +4,4 @@ The specifics of data are as following:
  - RU/EN language 🇷🇺+🇬🇧 
  - heavy mathjax usage 💲💲
  - embedded images of different ratios 🖼️
- - graph is not complete and includes orphan nodes 🕸️ 
+ - graph is incomplete and includes orphan nodes 🕸️ 
