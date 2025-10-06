@@ -24,3 +24,6 @@ def extract_header_props(content):
         props = dict()
 
     return props
+
+# def extract_body_props(content)
+# def run_rb_ner(content, rules_cfg)

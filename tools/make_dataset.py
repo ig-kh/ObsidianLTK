@@ -1,6 +1,8 @@
 import os
 import polars as pl
 from pathlib import Path
+from argparse import ArgumentParser
+
 from utils.obsidian_parsing import extract_backlinks, extract_header_props
 from utils.fs import list_shallow_dir, read_md
 
@@ -70,10 +72,14 @@ def get_ve_datasets(data):
 
 if __name__ == "__main__":
 
-    NOTES_PATH = "/mnt/i/obs_vaults/techStackGraph/Nodes"
+    parser = ArgumentParser()
+    parser.add_argument("--notes_src_dir")
+    parser.add_argument("--notes_df_dst")
+    parser.add_argument("--links_df_dst")
+    args = parser.parse_args()
 
-    directory = Path(NOTES_PATH)
-    md_files = list_shallow_dir(NOTES_PATH)
+    directory = Path(args.notes_src_dir)
+    md_files = list_shallow_dir(directory)
 
     md_data = []
     for filepath in md_files:
@@ -83,4 +89,8 @@ if __name__ == "__main__":
     
     v_df, e_df = get_ve_datasets(md_data)
 
-    print(v_df, e_df)
+    if args.notes_df_dst:
+        v_df.write_parquet(args.notes_df_dst)
+
+    if args.links_df_dst:
+        e_df.write_parquet(args.links_df_dst)
