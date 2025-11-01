@@ -1,0 +1,10 @@
+# ignore pycahce
+__pycache__/
+solutions/
+data/
+# ignore solver generated intermediate files
+*.mps
+*.mst
+# this is .solytion, NOT solidity lang =^)
+*.sol
+
