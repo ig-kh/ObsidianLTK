@@ -6,6 +6,7 @@ from argparse import ArgumentParser
 from utils.obsidian_parsing import extract_backlinks, extract_header_props
 from utils.fs import list_shallow_dir, read_md
 
+
 def parse_md_file(path):
     print(f"Processing file: {path}")
 
@@ -70,6 +71,7 @@ def get_ve_datasets(data):
 
     return nodes_df, edges_df
 
+
 if __name__ == "__main__":
 
     parser = ArgumentParser()
@@ -86,7 +88,7 @@ if __name__ == "__main__":
         note_data = parse_md_file(filepath)
         if note_data:
             md_data.append(note_data)
-    
+
     v_df, e_df = get_ve_datasets(md_data)
 
     if args.notes_df_dst:

@@ -1,17 +1,21 @@
 from pathlib import Path
+import os
 
-def list_shallow_dir(dir):
-    directory = Path(dir)
-    if not directory.exists():
-        print(f"Directory {directory} does not exist.")
 
-    md_files = list(directory.glob("*.md"))
-    if not md_files:
-        print(f"No .md files found in {directory}")
-
+def get_all_by_extension(start, extension="md"):
+    md_files = []
+    for dirpath, dirnames, filenames in os.walk(start):
+        if ".obsidian" in dirnames:
+            dirnames.remove(".obsidian")
+        for filename in filenames:
+            if filename.endswith(f".{extension}"):
+                # Compute relative path to root_dir
+                relative_path = os.path.relpath(os.path.join(dirpath, filename), start)
+                md_files.append(relative_path)
     return md_files
 
-def read_md(path):
+
+def read_md(path) -> str:
     try:
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
@@ -21,6 +25,6 @@ def read_md(path):
             content = f.read()
     except Exception as e:
         print(f"Error reading {path}: {e}")
-        return None
-    
+        return ""
+
     return content
