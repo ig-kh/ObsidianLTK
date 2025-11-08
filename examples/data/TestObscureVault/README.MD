@@ -1,0 +1,2 @@
+Hi!
+This is a toy obsidian graph dataset consisting of $\propto 10^0$ samples which is a synthetical data with obscure file naming and over-complexed vault structure (rarely observed in real life vaults and unadvised) for consistency check of parsing.

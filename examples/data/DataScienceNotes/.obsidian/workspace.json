@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "a6cd39e8593b6521",
+    "type": "split",
+    "children": [
+      {
+        "id": "7fd41ac682519b37",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75dd058e0d84340f",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "38cb421862c1f396",
+    "type": "split",
+    "children": [
+      {
+        "id": "7bf7602777cece36",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2444a0d242b70093",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "63dcc273d9ce984a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c0912e0792a2d3ff",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "cb358c244754c64e",
+    "type": "split",
+    "children": [
+      {
+        "id": "bc71fe3954553d66",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f44e8c829a493f56",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Cound-based методы вложения слов.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Cound-based методы вложения слов"
+            }
+          },
+          {
+            "id": "6b8e373f1d6bfb98",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Cound-based методы вложения слов.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Cound-based методы вложения слов"
+            }
+          },
+          {
+            "id": "8112258dbed1ca84",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7649726877467e60",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Cound-based методы вложения слов.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Cound-based методы вложения слов"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "75dd058e0d84340f",
+  "lastOpenFiles": [
+    "_src/Network-Analysis-Course-main/presentations/NSW-Kleinberg.pdf",
+    "_src/Network-Analysis-Course-main/presentations/Network-Clustering-part1.pdf",
+    "_src/Network-Analysis-Course-main/presentations/Navigable-Small-Worlds.pdf",
+    "_src/Network-Analysis-Course-main/README.md",
+    "_src/Network-Analysis-Course-main/P2P-Networks-Algorithms-DHT-Chord-Kademlia.md",
+    "_src/Network-Analysis-Course-main/Optimal-Logistics-Network.md",
+    "_src/Network-Analysis-Course-main/Network-Clustering-part-2.md",
+    "_src/Network-Analysis-Course-main/Network-Clustering-part-1.md",
+    "_src/Network-Analysis-Course-main/Navigable-Small-Worlds_Graph-Based-NN-Search.md",
+    "_src/Network-Analysis-Course-main/MCF_ext.md",
+    "_src/Network-Analysis-Course-main/Kleinberg-Model.md",
+    "_src/Network-Analysis-Course-main/Graph-Embeddings.md",
+    "_src/Network-Analysis-Course-main/Basic-Graph-Properties-and-Classic-Random-Graph-Models.md",
+    "_src/Sokolov_HSE_ML_lectures20-21/lecture02-linregr.pdf",
+    "_src/Sokolov_HSE_ML_lectures20-21/lecture01-notes.pdf",
+    "_src/Sokolov_HSE_ML_lectures20-21/lecture01-intro.pdf",
+    "_src/AnalogueNotes/decision_trees_make_predicates.png",
+    "_src/AnalogueNotes/desicion_tree_traversal.png",
+    "00.notes/Common numerical py libs with MKL.md",
+    "00.notes/Check BLAS backend.md",
+    "00.notes/Canny filter.md",
+    "00.notes/Bootstrapping.md",
+    "00.notes/BIO разметка для subword-моделей.md",
+    "00.notes/Типы W2V и Приложения.md",
+    "00.notes/Дискретный Лапласиан.md",
+    "00.notes/Деревья решений.md",
+    "00.notes/Графовый подход к решению ANN задачи.md",
+    "00.notes/Гомофильная гипотеза в графах.md",
+    "00.notes/Гипотеза структурной эквивалентности в графах.md",
+    "00.notes/Гауссово размытие изображения.md",
+    "00.notes/Биномиальное Распределение.md",
+    "00.notes/(Max,Plus)-Свертка.md",
+    "_templates/Note.md",
+    "_src/Sokolov_HSE_ML_lectures20-21/lecture07-trees.pdf",
+    "_src/Sokolov_HSE_ML_lectures20-21/lecture07-notes.pdf",
+    "_src/Sokolov_HSE_ML_lectures20-21/lecture08-ensembles.pdf",
+    "2016-fall",
+    "_src/Sokolov_HSE_ML_lectures20-21/lecture10-ensembles.pdf",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-spring/lecture-notes/pics/Correlation_examples.png",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-fall/seminars/img/thresholds.png",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-fall/seminars/img/pic6.png",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-fall/seminars/img/ml_roc_cross.png",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-fall/seminars/img/calibration_plot.png",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-fall/seminars/img/AUC_problem.png",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-fall/seminars/img/AUC.png",
+    "_src/Sokolov_HSE_ML_lectures20-21/all_years/2023-fall/homeworks-practice/homework-practice-03-gd/adam_meme.png"
+  ]
+}
