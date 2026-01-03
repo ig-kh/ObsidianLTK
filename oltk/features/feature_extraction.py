@@ -1,7 +1,7 @@
 import re
 import yaml
 from typing import List, Tuple, Mapping, Any
-from ...utils.re_constants import BACKLINK, NOTE_HEADER
+from ..utils.re_constants import BACKLINK, NOTE_HEADER
 
 def extract_backlinks(content) -> List[Tuple[str]]:
     backlinks = []

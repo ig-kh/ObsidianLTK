@@ -1,5 +1,5 @@
 from ..utils.fs import read_md, get_all_by_extension
-from ..text.extract.feature_extraction import extract_backlinks
+from ..features import extract_backlinks
 import polars as pl
 import os
 from copy import deepcopy
@@ -9,6 +9,7 @@ class VaultDataset:
     def __init__(self, root):
         self.root = root
 
+    def construct(self):
         note_paths = get_all_by_extension(self.root, "md")
 
         self._note_index = pl.DataFrame({"note_rel_path": note_paths}).with_row_index(

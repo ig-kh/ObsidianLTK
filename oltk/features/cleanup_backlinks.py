@@ -1,4 +1,4 @@
-from ...utils.re_constants import BACKLINK
+from ..utils.re_constants import BACKLINK
 
 # def cleanup_backlinks(content) -> str:
     
