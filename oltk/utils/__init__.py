@@ -1,2 +1,2 @@
-import fs
-import re_constants
+from .fs import *
+from .re_constants import *

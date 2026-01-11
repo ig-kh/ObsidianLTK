@@ -1,1 +1,1 @@
-from vault_dataset import VaultDataset
+from .vault_dataset import VaultDataset
