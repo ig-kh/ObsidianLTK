@@ -77,7 +77,7 @@ class VaultDataset:
             pl.col("links").list.get(2).alias("alias"),
         )
         self._edges = self._edges.drop_nulls("to_id").drop_nulls("from_id")
-
+        self._edges = self._edges.unique()
         self._vertixes = None
 
     def get_e(self):
