@@ -1,4 +1,4 @@
-![alt text](image.png)
+![alt text](./header_img.png)
 # **Obsidian** **L**ite **T**ool **K**it for ML 🤖 and analytics 📊
 *Your Vault is a Multimodal DataSet for Network Analysis!*
 
