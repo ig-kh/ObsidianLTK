@@ -1,3 +1,4 @@
 # ignore pycahce
 __pycache__/
 *egg-info/
+*tmp_data/

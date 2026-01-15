@@ -1,14 +1,15 @@
 import re
+from typing import Any, List, Mapping, Tuple
+
 import yaml
-from typing import List, Tuple, Mapping, Any
+
 from ..utils.re_constants import BACKLINK, NOTE_HEADER
+
 
 def extract_backlinks(content) -> List[Tuple[str]]:
     backlinks = []
 
-    backlink_matches = re.findall(
-        BACKLINK, content, re.UNICODE
-    )
+    backlink_matches = re.findall(BACKLINK, content, re.UNICODE)
 
     for match in backlink_matches:
 
@@ -25,6 +26,7 @@ def extract_backlinks(content) -> List[Tuple[str]]:
         backlinks.append((node_path, heading_path, node_alias))
 
     return backlinks
+
 
 def extract_header_props(content) -> Mapping[str, Any]:
     md_yaml_props = re.match(NOTE_HEADER, content, re.DOTALL)

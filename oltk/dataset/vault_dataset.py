@@ -1,9 +1,12 @@
-from ..utils.fs import read_md, get_all_by_extension
-from ..features import extract_backlinks
-import polars as pl
 import os
 from copy import deepcopy
+
+import polars as pl
 from networkx import DiGraph
+
+from ..features import extract_backlinks
+from ..utils.fs import get_all_by_extension, read_md
+
 
 class VaultDataset:
     def __init__(self, root):
@@ -97,6 +100,12 @@ class VaultDataset:
                 pl.col("note_path").map_elements(read_md).alias("text")
             ).drop("note_path")
         return deepcopy(self._vertixes)
-    
+
+    # TODO: сделать итератор с чтением фалов из индекса для кейсов, когда не хочется сохранять все тексты в память сразу
+    # def __iter__(self):
+    #    self._note_index.iter_rows()
+    #
+
+    # TODO: сделать упрощеные методы-касты в формат данных одного polars датафрейма и NetworkX графа
+    # def to_df(self):
     # def to_nx(self):
-        
