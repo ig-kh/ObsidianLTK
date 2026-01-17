@@ -103,8 +103,7 @@ class VaultDataset:
 
     # TODO: сделать итератор с чтением фалов из индекса для кейсов, когда не хочется сохранять все тексты в память сразу
     # def __iter__(self):
-    #    self._note_index.iter_rows()
-    #
+    #    self._note_index.iter_rows(named=True)
 
     # TODO: сделать упрощеные методы-касты в формат данных одного polars датафрейма и NetworkX графа
     # def to_df(self):
