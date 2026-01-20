@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 
 
 def get_all_by_extension(start, extension="md"):
@@ -9,7 +8,6 @@ def get_all_by_extension(start, extension="md"):
             dirnames.remove(".obsidian")
         for filename in filenames:
             if filename.endswith(f".{extension}"):
-                # Compute relative path to root_dir
                 relative_path = os.path.relpath(os.path.join(dirpath, filename), start)
                 md_files.append(relative_path)
     return md_files
