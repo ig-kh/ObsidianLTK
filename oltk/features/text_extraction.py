@@ -37,6 +37,3 @@ def extract_header_props(content) -> Mapping[str, Any]:
         props = dict()
 
     return props
-
-# def extract_body_properties(content)
-# def extract_body_tags(content)

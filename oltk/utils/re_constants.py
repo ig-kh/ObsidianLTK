@@ -1,8 +1,11 @@
+# Links
 BACKLINK = r"(?<!\!)(\[\[([^\]\|]+?)(?:\|([^\]]+?))?\]\])"
-IMPUTED_BACKLINK = r""
+
+# Explicit features
 NOTE_HEADER = r"^---\s*\n(.*?)\n---\s*\n"
-# INBODY_TAG
-# INBODY_PROPERTY
-# HEADING
+INBODY_TAG = r""
+
+# Special cases - permissive regexps for embedded expressions syntax
+MATHJAX_EXPR = r""
 TEMPLATER_EXPR = r"<%[^>]+%>"
 JINJA_EXPR = r"\{\{[^}]+\}\}|\{%[^%]+%-?%\}|\{#[^#]*#\}"
