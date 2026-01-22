@@ -31,7 +31,7 @@ def extract_backlinks(content) -> List[Tuple[str]]:
 def extract_header_props(content) -> Mapping[str, Any]:
     md_yaml_props = re.match(NOTE_HEADER, content, re.DOTALL)
 
-    if md_yaml_props:
+    if md_yaml_props and md_yaml_props.start() == 0:
         props = yaml.safe_load(md_yaml_props.group(1))
     else:
         props = dict()
