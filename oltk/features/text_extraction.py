@@ -6,7 +6,7 @@ import yaml
 from ..utils.re_constants import BACKLINK, NOTE_HEADER
 
 
-def extract_backlinks(content) -> List[Tuple[str]]:
+def extract_backlinks(content: str) -> List[Tuple[str]]:
     backlinks = []
 
     backlink_matches = re.findall(BACKLINK, content, re.UNICODE)
@@ -28,7 +28,7 @@ def extract_backlinks(content) -> List[Tuple[str]]:
     return backlinks
 
 
-def extract_header_props(content) -> Mapping[str, Any]:
+def extract_header_props(content: str) -> Mapping[str, Any]:
     md_yaml_props = re.match(NOTE_HEADER, content, re.DOTALL)
 
     if md_yaml_props and md_yaml_props.start() == 0:

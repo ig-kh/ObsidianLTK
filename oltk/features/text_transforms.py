@@ -2,7 +2,7 @@ from ..utils.re_constants import BACKLINK
 import re
 
 
-def dereference_backlinks(content) -> str:
+def dereference_backlinks(content: str) -> str:
 
     prev_end = 0
     derefernced_content = ""
