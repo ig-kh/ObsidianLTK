@@ -11,31 +11,53 @@ from ..utils.fs import get_all_by_extension, read_md
 class VaultDataset:
     def __init__(self, root):
         self.root = root
+        self._note_index = None
+
+    @staticmethod
+    def from_index(vault_index, custom_root=""):
+        instance = VaultDataset(custom_root)
+        instance._note_index = vault_index
+        return instance
+
+    def __add__(self, other):
+        if not isinstance(other, VaultDataset):
+            return NotImplemented
+
+        cols = ["note_ref", "note_path", "note_name"]
+
+        joint_index = pl.concat(
+            [self.get_v_index.select(cols), other.get_v_index.select(cols)]
+        ).with_row_index(name="note_id")
+
+        dataset_sum = VaultDataset.from_index(joint_index, f"{self.root}+{other.root}")
+        dataset_sum.construct()
+        return dataset
 
     def construct(self):
-        note_paths = get_all_by_extension(self.root, "md")
+        if self._note_index is None:
+            note_paths = get_all_by_extension(self.root, "md")
 
-        self._note_index = pl.DataFrame({"note_rel_path": note_paths}).with_row_index(
-            name="note_id"
-        )
+            self._note_index = pl.DataFrame(
+                {"note_rel_path": note_paths}
+            ).with_row_index(name="note_id")
 
-        self._note_index = self._note_index.with_columns(
-            pl.col("note_rel_path")
-            .str.replace_all(".md", "", literal=True)
-            .alias("note_ref")
-        )
+            self._note_index = self._note_index.with_columns(
+                pl.col("note_rel_path")
+                .str.replace_all(".md", "", literal=True)
+                .alias("note_ref")
+            )
 
-        self._note_index = self._note_index.with_columns(
-            pl.col("note_rel_path")
-            .map_elements(lambda x: os.path.join(self.root, x))
-            .alias("note_path")
-        ).drop("note_rel_path")
+            self._note_index = self._note_index.with_columns(
+                pl.col("note_rel_path")
+                .map_elements(lambda x: os.path.join(self.root, x))
+                .alias("note_path")
+            ).drop("note_rel_path")
 
-        self._note_index = self._note_index.with_columns(
-            pl.col("note_ref")
-            .map_elements(lambda x: x.split("/")[-1])
-            .alias("note_name")
-        )
+            self._note_index = self._note_index.with_columns(
+                pl.col("note_ref")
+                .map_elements(lambda x: x.split("/")[-1])
+                .alias("note_name")
+            )
 
         _edges_left = (
             self._note_index.select(
@@ -100,11 +122,3 @@ class VaultDataset:
                 pl.col("note_path").map_elements(read_md).alias("text")
             ).drop("note_path")
         return deepcopy(self._vertixes)
-
-    # TODO: сделать итератор с чтением фалов из индекса для кейсов, когда не хочется сохранять все тексты в память сразу
-    # def __iter__(self):
-    #    self._note_index.iter_rows(named=True)
-
-    # TODO: сделать упрощеные методы-касты в формат данных одного polars датафрейма и NetworkX графа
-    # def to_df(self):
-    # def to_nx(self):

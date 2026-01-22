@@ -3,7 +3,6 @@ BACKLINK = r"(?<!\!)(\[\[([^\]\|]+?)(?:\|([^\]]+?))?\]\])"
 
 # Explicit features
 NOTE_HEADER = r"^---\s*\n(.*?)\n---\s*\n"
-INBODY_TAG = r""
 
 # Special cases - permissive regexps for embedded expressions syntax
 MATHJAX_EXPR = r""
