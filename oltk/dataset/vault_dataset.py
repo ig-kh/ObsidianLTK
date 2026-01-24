@@ -31,7 +31,7 @@ class VaultDataset:
 
         dataset_sum = VaultDataset.from_index(joint_index, f"{self.root}+{other.root}")
         dataset_sum.construct()
-        return dataset
+        return dataset_sum
 
     def construct(self):
         if self._note_index is None:
