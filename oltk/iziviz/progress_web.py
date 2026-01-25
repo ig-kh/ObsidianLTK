@@ -15,8 +15,7 @@ def progress_web(df, cat_col, ts_col, ts_delta, groups, min_ts=None, max_ts=None
         fig.add_trace(go.Scatterpolar(
             r=row["__cum_cnt_vec__"],
             theta=categories,
-            name=row["__ts_bucket__"]
+            name=str(row["__ts_bucket__"])
         ))
-
-
+        
     return fig
