@@ -9,13 +9,13 @@ def cum_cat_cnt_bucketized(
     else:
         min_ts = pl.max_horizontal(min_ts, df[ts_col].min())
     if max_ts is None:
-        max_ts = df[ts_col].max()
+        max_ts = df[ts_col].dt.offset_by(delta).max()
     else:
         max_ts = pl.min_horizontal(max_ts, df[ts_col].max())
 
-    obs_range = pl.DataFrame(
+    buckets = pl.DataFrame(
         pl.date_range(min_ts, max_ts, delta, eager=True, closed="both").alias(
-            "__ts_bucket__"
+            f"__ts_bucket__({ts_col})"
         )
     )
 
@@ -24,38 +24,42 @@ def cum_cat_cnt_bucketized(
     else:
         df_filtered = df.filter(pl.col(ts_col) >= min_ts)
 
-    df_filtered = df_filtered.select([ts_col, val_col]).filter(pl.col(ts_col) <= max_ts)
-
-    dense_count_before_buckets = (
-        df_filtered.group_by([val_col, ts_col])
-        .agg(pl.len().alias("__instance_cnt__"))
+    df_filtered = (
+        df_filtered.select([ts_col, val_col])
+        .filter(pl.col(ts_col) <= max_ts)
         .sort(ts_col)
     )
 
-    bucketized_count = dense_count_before_buckets.join_asof(
-        obs_range,
+    sparse_bucketized_instances = df_filtered.join_asof(
+        buckets,
         left_on=ts_col,
-        right_on="__ts_bucket__",
+        right_on=f"__ts_bucket__({ts_col})",
         strategy="forward",
         tolerance=None,
-    ).drop(ts_col)
+    ).select([f"__ts_bucket__({ts_col})", val_col])
 
-    grid = obs_range.join(df.select(val_col).unique(subset=val_col), how="cross")
+    sparce_bucketized_cnt = (
+        sparse_bucketized_instances.group_by([val_col, f"__ts_bucket__({ts_col})"])
+        .agg(pl.len().alias(f"__instance_cnt__({val_col})"))
+        .sort(f"__ts_bucket__({ts_col})")
+    )
 
-    sparse_count_bucketized = grid.join(
-        bucketized_count, on=["__ts_bucket__", val_col], how="left"
-    ).with_columns(pl.col("__instance_cnt__").fill_null(0))
+    dense_grid = buckets.join(df.select(val_col).unique(subset=val_col), how="cross")
 
-    sparse_cum_count_bucketized = sparse_count_bucketized.with_columns(
-        pl.col("__instance_cnt__")
+    dense_bucketized_cnt = dense_grid.join(
+        sparce_bucketized_cnt, on=[f"__ts_bucket__({ts_col})", val_col], how="left"
+    ).with_columns(pl.col(f"__instance_cnt__({val_col})").fill_null(0))
+
+    dense_bucketized_cum_cnt = dense_bucketized_cnt.with_columns(
+        pl.col(f"__instance_cnt__({val_col})")
         .cum_sum()
-        .over(val_col, order_by="__ts_bucket__")
-        .alias("__cum_cnt__")
-    ).drop("__instance_cnt__")
+        .over(val_col, order_by=f"__ts_bucket__({ts_col})")
+        .alias(f"__cum_cnt__({val_col})")
+    )
 
-    return sparse_cum_count_bucketized.pivot(
+    return dense_bucketized_cum_cnt.pivot(
         on=val_col,
-        index="__ts_bucket__",
-        values="__cum_cnt__",
+        index=f"__ts_bucket__({ts_col})",
+        values=f"__cum_cnt__({val_col})",
         aggregate_function="sum",
     )
