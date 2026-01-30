@@ -3,6 +3,7 @@ from ..features import cat_groups_resolver, cum_cat_cnt_bucketized
 import polars as pl
 from ..utils.plotting import generate_purple_lin_scale
 
+
 def progress_gem(
     df, cat_col, ts_col, ts_delta, groups, min_ts=None, max_ts=None, cold_start=True
 ):

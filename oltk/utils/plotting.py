@@ -7,7 +7,6 @@ def generate_purple_lin_scale(n_points):
     for i in range(n_points):
         t = i / (n_points - 1)
 
-
         r = int(r1 + (r2 - r1) * t)
         g = int(g1 + (g2 - g1) * t)
         b = int(b1 + (b2 - b1) * t)
@@ -17,6 +16,7 @@ def generate_purple_lin_scale(n_points):
 
     return colors
 
+
 def generate_purple_with_fade_lin_scale(n_points, min_alpha=0.25, max_alpha=0.95):
     colors = []
 
@@ -25,17 +25,17 @@ def generate_purple_with_fade_lin_scale(n_points, min_alpha=0.25, max_alpha=0.95
 
     for i in range(n_points):
         t = i / (n_points - 1)
-        
+
         r = int(r1 + (r2 - r1) * t)
         g = int(g1 + (g2 - g1) * t)
         b = int(b1 + (b2 - b1) * t)
 
         alpha = min_alpha + (max_alpha - min_alpha) * t
-        
+
         rgba_color = f"rgba({r}, {g}, {b}, {alpha:.3f})"
         colors.append(rgba_color)
-    
+
     return colors
 
 
-#Need to make them customizable - generate ruby, saphire, obsidian and emerald colour schemes
+# Need to make them customizable - generate ruby, saphire, obsidian and emerald colour schemes

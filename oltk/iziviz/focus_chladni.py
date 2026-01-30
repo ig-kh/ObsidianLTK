@@ -42,10 +42,8 @@ def focus_chladni(
 
     for idx, row in enumerate(stats_vec.iter_rows(named=True)):
         blob_stats = np.array(row[f"__cum_cnt_vec__({cat_col})"])
-        blob_stats = blob_stats/np.linalg.norm(blob_stats)
-        closed_rad = (
-            blob_stats + blob_stats[:1]
-        )
+        blob_stats = blob_stats / np.linalg.norm(blob_stats)
+        closed_rad = blob_stats + blob_stats[:1]
         fig.add_trace(
             go.Scatterpolar(
                 mode="lines",
