@@ -1,8 +1,18 @@
-def generate_purple_lin_scale(n_points):
+from enum import Enum
+from typing import TypeAlias
+
+class GEM_PALETTE(Enum):
+    obsidian = ((int("E8", 16), int("D9", 16), int("FF", 16)), (int("4B", 16), int("00", 16), int("82", 16)))
+    ruby = ((int("FF", 16), int("99", 16), int("99", 16)), (int("8B", 16), int("00", 16), int("33", 16)))
+    saphire = ((int("CC", 16), int("E5", 16), int("FF", 16)), (int("00", 16), int("33", 16), int("66", 16)))
+    emerald = ((int("99", 16), int("FF", 16), int("CC", 16)), (int("00", 16), int("66", 16), int("33", 16)))
+
+
+
+def generate_purple_lin_scale(n_points, colour = "obsidian"):
     colors = []
 
-    r1, g1, b1 = int("E8", 16), int("D9", 16), int("FF", 16)
-    r2, g2, b2 = int("4B", 16), int("00", 16), int("82", 16)
+    (r1, g1, b1) , (r2, g2, b2) = GEM_PALETTE.__getitem__(colour)
 
     for i in range(n_points):
         t = i / (n_points - 1)
@@ -17,11 +27,10 @@ def generate_purple_lin_scale(n_points):
     return colors
 
 
-def generate_purple_with_fade_lin_scale(n_points, min_alpha=0.25, max_alpha=0.95):
+def generate_purple_with_fade_lin_scale(n_points, colour: GEM_PALETTE = "obsidian", min_alpha=0.25, max_alpha=0.95):
     colors = []
 
-    r1, g1, b1 = int("E8", 16), int("D9", 16), int("FF", 16)
-    r2, g2, b2 = int("4B", 16), int("00", 16), int("82", 16)
+    (r1, g1, b1) , (r2, g2, b2) = GEM_PALETTE.__getitem__(colour)
 
     for i in range(n_points):
         t = i / (n_points - 1)
@@ -36,6 +45,3 @@ def generate_purple_with_fade_lin_scale(n_points, min_alpha=0.25, max_alpha=0.95
         colors.append(rgba_color)
 
     return colors
-
-
-# Need to make them customizable - generate ruby, saphire, obsidian and emerald colour schemes
