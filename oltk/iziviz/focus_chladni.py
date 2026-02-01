@@ -1,12 +1,20 @@
 import plotly.graph_objects as go
 from ..features import cat_groups_resolver, cum_cat_cnt_bucketized
 import polars as pl
-from ..utils.plotting import generate_purple_with_fade_lin_scale
+from ..utils.plotting import generate_color_lin_scale_with_fade, GemColor
 import numpy as np
 
 
 def focus_chladni(
-    df, cat_col, ts_col, ts_delta, groups, min_ts=None, max_ts=None, cold_start=True
+    df,
+    cat_col,
+    ts_col,
+    ts_delta,
+    groups,
+    color: GemColor = "obsidian",
+    min_ts=None,
+    max_ts=None,
+    cold_start=True,
 ):
     grouped_data = cat_groups_resolver(df, cat_col, f"__grouped({cat_col})__", groups)
     stat = cum_cat_cnt_bucketized(
@@ -24,7 +32,7 @@ def focus_chladni(
         pl.concat_list(categories).alias(f"__cum_cnt_vec__({cat_col})"),
     )
 
-    colors = generate_purple_with_fade_lin_scale(len(stats_vec))
+    colors = generate_color_lin_scale_with_fade(len(stats_vec), color=color)
 
     fig = go.Figure()
 

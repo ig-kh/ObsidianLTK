@@ -4,17 +4,31 @@ from typing import Literal, TypeAlias
 
 
 class GEM_PALETTE(Enum):
-    obsidian = ((int("E8", 16), int("D9", 16), int("FF", 16)), (int("4B", 16), int("00", 16), int("82", 16)))
-    ruby = ((int("FF", 16), int("99", 16), int("99", 16)), (int("8B", 16), int("00", 16), int("33", 16)))
-    saphire = ((int("CC", 16), int("E5", 16), int("FF", 16)), (int("00", 16), int("33", 16), int("66", 16)))
-    emerald = ((int("99", 16), int("FF", 16), int("CC", 16)), (int("00", 16), int("66", 16), int("33", 16)))
+    obsidian = (
+        (int("E8", 16), int("D9", 16), int("FF", 16)),
+        (int("4B", 16), int("00", 16), int("82", 16)),
+    )
+    ruby = (
+        (int("FF", 16), int("99", 16), int("99", 16)),
+        (int("8B", 16), int("00", 16), int("33", 16)),
+    )
+    saphire = (
+        (int("CC", 16), int("E5", 16), int("FF", 16)),
+        (int("00", 16), int("33", 16), int("66", 16)),
+    )
+    emerald = (
+        (int("99", 16), int("FF", 16), int("CC", 16)),
+        (int("00", 16), int("66", 16), int("33", 16)),
+    )
 
-GemColor: TypeAlias = Literal['obsidian', 'ruby', 'saphire', 'emerald']
 
-def generate_colour_lin_scale(n_points, colour: GemColor= "obsidian"):
+GemColor: TypeAlias = Literal["obsidian", "ruby", "saphire", "emerald"]
+
+
+def generate_color_lin_scale(n_points: int, color: GemColor = "obsidian"):
     colors = []
 
-    (r1, g1, b1) , (r2, g2, b2) = GEM_PALETTE[colour].value
+    (r1, g1, b1), (r2, g2, b2) = GEM_PALETTE[color].value
 
     for i in range(n_points):
         t = i / (n_points - 1)
@@ -29,10 +43,15 @@ def generate_colour_lin_scale(n_points, colour: GemColor= "obsidian"):
     return colors
 
 
-def generate_colour_lin_scale_with_fade(n_points, colour: GemColor = "obsidian", min_alpha=0.25, max_alpha=0.95):
+def generate_color_lin_scale_with_fade(
+    n_points: int,
+    color: GemColor = "obsidian",
+    min_alpha: float = 0.25,
+    max_alpha: float = 0.95,
+):
     colors = []
 
-    (r1, g1, b1) , (r2, g2, b2) = GEM_PALETTE[colour].value
+    (r1, g1, b1), (r2, g2, b2) = GEM_PALETTE[color].value
 
     for i in range(n_points):
         t = i / (n_points - 1)
