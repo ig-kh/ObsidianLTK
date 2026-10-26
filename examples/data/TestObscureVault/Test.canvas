@@ -1,0 +1,22 @@
+{
+	"nodes":[
+		{"id":"4d1d094ad412ba9e","type":"group","x":-600,"y":-1160,"width":1240,"height":1840,"label":"Group1"},
+		{"id":"12214884eeb600c2","type":"group","x":-1943,"y":-907,"width":2003,"height":547,"label":"Group0"},
+		{"id":"962c9099317e6a70","type":"group","x":-520,"y":-120,"width":1040,"height":720,"label":"Group3"},
+		{"id":"256f9c2f1de72edf","type":"file","file":"fold1/note_2.md","x":-462,"y":132,"width":400,"height":400},
+		{"id":"28cd5c4111efdac1","type":"file","file":"note_0.md","x":60,"y":0,"width":400,"height":400},
+		{"id":"8c5ed30f4bae2c21","type":"file","file":"note_1.md","x":-1480,"y":-840,"width":400,"height":400},
+		{"id":"0cac5a1aec3d9c02","type":"file","file":"fold1/fold1-1/note_1.md","x":-462,"y":-840,"width":400,"height":400},
+		{"id":"5f6443636fe97e55","type":"text","text":"Plain text node\n[[note_2]]\n[[fold1/note_2]]","x":-1900,"y":-584,"width":220,"height":144},
+		{"id":"9a8778f0304076fc","type":"text","text":"Haul note","x":-1805,"y":-260,"width":405,"height":680},
+		{"id":"b192f90932f8fb69","type":"text","text":"Spatially included note","x":-1790,"y":-190,"width":310,"height":470}
+	],
+	"edges":[
+		{"id":"edfc7bcd3a33fd0e","fromNode":"8c5ed30f4bae2c21","fromSide":"bottom","toNode":"4d1d094ad412ba9e","toSide":"left","label":"Is not included in Group"},
+		{"id":"4c4b957f5fd8be61","fromNode":"0cac5a1aec3d9c02","fromSide":"right","toNode":"28cd5c4111efdac1","toSide":"top","label":"Node2Node"},
+		{"id":"b61e0bc322a85d89","fromNode":"12214884eeb600c2","fromSide":"top","toNode":"4d1d094ad412ba9e","toSide":"top","label":"Group2Group"},
+		{"id":"28a2ad65b92d23ae","fromNode":"8c5ed30f4bae2c21","fromSide":"top","toNode":"0cac5a1aec3d9c02","toSide":"top","label":"Circular Relation Out"},
+		{"id":"e0b0209201318330","fromNode":"0cac5a1aec3d9c02","fromSide":"bottom","toNode":"8c5ed30f4bae2c21","toSide":"bottom","label":"Circular Relation In"},
+		{"id":"f86aaf0eb3110093","fromNode":"8c5ed30f4bae2c21","fromSide":"left","toNode":"5f6443636fe97e55","toSide":"right","label":"File2Text"}
+	]
+}
